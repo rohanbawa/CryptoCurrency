@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
-  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle
+  IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonButton
 } from '@ionic/react';
 import axios from 'axios';
 import { useParams } from 'react-router';
@@ -52,9 +53,13 @@ const CryptoDetailPage: React.FC = () => {
             </IonCardHeader>
             <IonCardContent>
               <p>{cryptoDetails.description.en}</p>
-              <p>Current Price: ${cryptoDetails.market_data.current_price.usd.toLocaleString()}</p>
-              <p>Market Cap: ${cryptoDetails.market_data.market_cap.usd.toLocaleString()}</p>
-              <p>24h Change: {cryptoDetails.market_data.price_change_percentage_24h.toFixed(2)}%</p>
+              <h2><b>Current Price:</b> ${cryptoDetails.market_data.current_price.usd.toLocaleString()}</h2>
+              <h2><b>Market Cap:</b> ${cryptoDetails.market_data.market_cap.usd.toLocaleString()}</h2>
+              <h2><b>24h Change:</b> {cryptoDetails.market_data.price_change_percentage_24h.toFixed(2)}%</h2>
+            </IonCardContent>
+            <IonCardContent>
+              <IonButton expand='block' color={'success'}>Buy</IonButton>
+              <IonButton expand='block'  color={'danger'}>Sell</IonButton>
             </IonCardContent>
           </IonCard>
         ) : (
