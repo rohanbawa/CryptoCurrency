@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { cash, cashOutline, ellipse, search, square, triangle, wallet } from 'ionicons/icons';
+import { briefcase, briefcaseOutline, cash, cashOutline, ellipse, logIn, logoBitcoin, man, person, personOutline, search, square, triangle, wallet } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -79,16 +79,16 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={cashOutline} />
+            <IonIcon aria-hidden="true" icon={logoBitcoin} />
             <IonLabel>Watchlist</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={wallet} />
+            <IonIcon aria-hidden="true" icon={briefcase} />
             <IonLabel>Portfolio</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon aria-hidden="true" icon={personOutline} />
+            <IonLabel>Profile</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
