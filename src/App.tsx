@@ -48,6 +48,7 @@ import './theme/variables.css';
 import CryptoDetailPage from './pages/CryptoDetails';
 import logger from './services/logger';
 import LogViewer from './components/LogViewer';
+import AddFundsPage from './pages/AddFunds';
 
 logger.log('This is a log message');
 
@@ -76,6 +77,7 @@ const App: React.FC = () => (
             <Redirect to="/tab1" />
           </Route>
           <Route path="/crypto/:id" component={CryptoDetailPage} exact />
+          <Route path="/tab3/add-funds" component={AddFundsPage}/>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
