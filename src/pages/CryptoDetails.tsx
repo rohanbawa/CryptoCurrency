@@ -7,6 +7,7 @@ import {
 } from '@ionic/react';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import { useWallet } from '../context/WalletContext'; // Ensure this import is correct based on your directory structure
 
 interface CryptoDetails {
   name: string;
@@ -24,6 +25,7 @@ interface CryptoDetails {
 const CryptoDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [cryptoDetails, setCryptoDetails] = useState<CryptoDetails | null>(null);
+  const { buyCrypto, sellCrypto, portfolio } = useWallet();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,11 +40,29 @@ const CryptoDetailPage: React.FC = () => {
     fetchData();
   }, [id]);
 
+  const handleBuy = () => {
+    if (cryptoDetails) {
+      const quantity = 1; // Define how many units you want to allow the user to buy at once
+      const pricePerUnit = cryptoDetails.market_data.current_price.usd;
+      buyCrypto(cryptoDetails.symbol, quantity, pricePerUnit);
+    }
+  };
+
+  const handleSell = () => {
+    if (cryptoDetails && portfolio[cryptoDetails.symbol] && portfolio[cryptoDetails.symbol] > 0) {
+      const quantity = 1; // Define how many units you want to allow the user to sell at once
+      const pricePerUnit = cryptoDetails.market_data.current_price.usd;
+      sellCrypto(cryptoDetails.symbol, quantity, pricePerUnit);
+    } else {
+      console.error("You don't own enough of this cryptocurrency to sell.");
+    }
+  };
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-        <IonButtons slot="start">
+          <IonButtons slot="start">
             <IonBackButton defaultHref="/tab1" />
           </IonButtons>
           <IonTitle>Crypto Detail: {cryptoDetails?.name}</IonTitle>
@@ -51,7 +71,7 @@ const CryptoDetailPage: React.FC = () => {
       <IonContent>
         {cryptoDetails ? (
           <IonCard>
-            <img src={cryptoDetails.image.large} alt={cryptoDetails.name} style={{ width: '50%', display:'block',margin:'auto' }} />
+            <img src={cryptoDetails.image.large} alt={cryptoDetails.name} style={{ width: '50%', display: 'block', margin: 'auto' }} />
             <IonCardHeader>
               <IonCardTitle>{cryptoDetails.name}</IonCardTitle>
               <IonCardSubtitle>{cryptoDetails.symbol.toUpperCase()} - {cryptoDetails.hashing_algorithm}</IonCardSubtitle>
@@ -63,8 +83,8 @@ const CryptoDetailPage: React.FC = () => {
               <h2><b>24h Change:</b> {cryptoDetails.market_data.price_change_percentage_24h.toFixed(2)}%</h2>
             </IonCardContent>
             <IonCardContent>
-              <IonButton expand='block' color={'success'}>Buy</IonButton>
-              <IonButton expand='block'  color={'danger'}>Sell</IonButton>
+              <IonButton expand='block' color={'success'} onClick={handleBuy}>Buy</IonButton>
+              <IonButton expand='block' color={'danger'} onClick={handleSell}>Sell</IonButton>
             </IonCardContent>
           </IonCard>
         ) : (
