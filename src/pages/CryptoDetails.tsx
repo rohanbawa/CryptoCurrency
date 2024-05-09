@@ -32,7 +32,7 @@ const CryptoDetailPage: React.FC = () => {
         console.error('Failed to fetch cryptocurrency data:', error);
       }
     };
-    
+      
     fetchData();
   }, [id]);
 

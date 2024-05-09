@@ -1,8 +1,14 @@
 import { IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab3.css';
 import { caretForwardCircle, play, playOutline } from 'ionicons/icons';
+import { useHistory } from 'react-router';
 
 const Tab3: React.FC = () => {
+  const history = useHistory();
+  const navigateToAddFunds = () => {
+    history.push('/add-funds');
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -21,7 +27,7 @@ const Tab3: React.FC = () => {
           <IonCardTitle>Wallet</IonCardTitle>
           <IonCardSubtitle>Balance: {}
           </IonCardSubtitle>
-          <IonButton>Add funds</IonButton>
+          <IonButton onClick={navigateToAddFunds}>Add funds</IonButton>
           <IonButton>Withdraw funds</IonButton>
         </IonCardHeader>
        </IonCard>

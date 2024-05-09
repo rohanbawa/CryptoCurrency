@@ -77,7 +77,8 @@ const App: React.FC = () => (
             <Redirect to="/tab1" />
           </Route>
           <Route path="/crypto/:id" component={CryptoDetailPage} exact />
-          <Route path="/tab3/add-funds" component={AddFundsPage}/>
+          <Route path="/add-funds" component={AddFundsPage} exact />
+          <Redirect from="/" to="/tab3" exact />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
@@ -91,7 +92,7 @@ const App: React.FC = () => (
           <IonTabButton tab="tab3" href="/tab3">
             <IonIcon aria-hidden="true" icon={person} />
             <IonLabel>Profile</IonLabel>
-          </IonTabButton>
+          </IonTabButton> 
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
