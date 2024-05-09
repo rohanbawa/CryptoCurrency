@@ -27,6 +27,7 @@ const CryptoDetailPage: React.FC = () => {
   const [cryptoDetails, setCryptoDetails] = useState<CryptoDetails | null>(null);
   const { buyCrypto, sellCrypto, portfolio } = useWallet();
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,7 +43,7 @@ const CryptoDetailPage: React.FC = () => {
 
   const handleBuy = () => {
     if (cryptoDetails) {
-      const quantity = 1; // Define how many units you want to allow the user to buy at once
+      const quantity = 1; 
       const pricePerUnit = cryptoDetails.market_data.current_price.usd;
       buyCrypto(cryptoDetails.symbol, quantity, pricePerUnit);
     }
@@ -50,7 +51,7 @@ const CryptoDetailPage: React.FC = () => {
 
   const handleSell = () => {
     if (cryptoDetails && portfolio[cryptoDetails.symbol] && portfolio[cryptoDetails.symbol] > 0) {
-      const quantity = 1; // Define how many units you want to allow the user to sell at once
+      const quantity = 1; 
       const pricePerUnit = cryptoDetails.market_data.current_price.usd;
       sellCrypto(cryptoDetails.symbol, quantity, pricePerUnit);
     } else {

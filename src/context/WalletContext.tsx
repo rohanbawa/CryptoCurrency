@@ -73,7 +73,7 @@ export const WalletProvider: React.FC<{children: ReactNode}> = ({ children }) =>
       };
       setTransactions([...transactions, transaction]);
     } else {
-      console.error("Not enough balance to buy");
+        console.error("Not enough balance to buy");
     }
   };
 

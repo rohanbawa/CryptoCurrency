@@ -52,12 +52,14 @@ import LogViewer from './components/LogViewer';
 import AddFundsPage from './pages/AddFunds';
 import TransactionsPage from './pages/TransactionsPage';
 import { WalletProvider } from './context/WalletContext';
+import { useEffect, useState } from 'react';
 
 logger.log('This is a log message');
 
 setupIonicReact();
 
 const App: React.FC = () => (
+
   <IonApp>
     <TransactionProvider>
       <WalletProvider>

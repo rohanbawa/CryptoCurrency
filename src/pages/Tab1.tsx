@@ -20,6 +20,7 @@ import axios from 'axios';
 import './Tab1.css';
 import { useHistory } from 'react-router-dom';
 import logger from '../services/logger';
+import { warning } from 'ionicons/icons';
 
 
 interface CryptoCurrency {
