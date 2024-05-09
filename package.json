@@ -12,9 +12,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@awesome-cordova-plugins/vibration": "^6.7.0",
     "@capacitor/app": "6.0.0",
     "@capacitor/core": "6.0.0",
-    "@capacitor/haptics": "6.0.0",
+    "@capacitor/haptics": "^6.0.0",
     "@capacitor/keyboard": "6.0.0",
     "@capacitor/status-bar": "6.0.0",
     "@ionic/react": "^8.0.0",
@@ -23,6 +24,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
+    "cordova-plugin-vibration": "^3.1.1",
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",

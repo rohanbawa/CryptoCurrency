@@ -7,7 +7,9 @@ import {
 } from '@ionic/react';
 import axios from 'axios';
 import { useParams } from 'react-router';
-import { useWallet } from '../context/WalletContext'; // Ensure this import is correct based on your directory structure
+import { useWallet } from '../context/WalletContext'; 
+import { Vibration } from '@awesome-cordova-plugins/vibration';
+
 
 interface CryptoDetails {
   name: string;
@@ -26,6 +28,7 @@ const CryptoDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [cryptoDetails, setCryptoDetails] = useState<CryptoDetails | null>(null);
   const { buyCrypto, sellCrypto, portfolio } = useWallet();
+  
 
 
   useEffect(() => {
@@ -46,6 +49,7 @@ const CryptoDetailPage: React.FC = () => {
       const quantity = 1; 
       const pricePerUnit = cryptoDetails.market_data.current_price.usd;
       buyCrypto(cryptoDetails.symbol, quantity, pricePerUnit);
+      Vibration.vibrate(2000);
     }
   };
 
