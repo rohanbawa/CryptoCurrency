@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
   IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle,
-  IonButton
+  IonButton,
+  IonBackButton,
+  IonButtons
 } from '@ionic/react';
 import axios from 'axios';
 import { useParams } from 'react-router';
@@ -32,7 +34,7 @@ const CryptoDetailPage: React.FC = () => {
         console.error('Failed to fetch cryptocurrency data:', error);
       }
     };
-      
+
     fetchData();
   }, [id]);
 
@@ -40,6 +42,9 @@ const CryptoDetailPage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+        <IonButtons slot="start">
+            <IonBackButton defaultHref="/tab1" />
+          </IonButtons>
           <IonTitle>Crypto Detail: {cryptoDetails?.name}</IonTitle>
         </IonToolbar>
       </IonHeader>

@@ -12,7 +12,9 @@ import {
   IonCol,
   IonButton,
   IonImg,
-  IonSearchbar
+  IonSearchbar,
+  IonBackButton,
+  IonButtons
 } from '@ionic/react';
 import axios from 'axios';
 import './Tab1.css';
@@ -48,7 +50,7 @@ const Home: React.FC = () => {
         const result = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
           params: {
             vs_currency: 'usd',
-            ids: 'bitcoin,ethereum,ripple,litecoin,cardano,dogecoin,binancecoin,stellar,polkadot,chainlink,tether,uniswap,usd-coin,bitcoin-cash',
+            ids: 'bitcoin,ethereum,ripple,litecoin,cardano,dogecoin,binancecoin,stellar,polkadot,chainlink,tether,uniswap,usd-coin,bitcoin-cash,solarcoin,dash,zcash,monero,neo,bitcoin-sv,zcash-sv,tron,vechain,zcash-governance,zcash-governance-legacy,zcash-legacy',
             
           }
         });

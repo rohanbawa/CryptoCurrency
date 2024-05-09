@@ -10,11 +10,12 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { briefcase, briefcaseOutline, cash, cashOutline, ellipse, logIn, logoBitcoin, man, person, personOutline, search, square, triangle, wallet } from 'ionicons/icons';
+import { briefcase, logoBitcoin, person } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
-import GlobalHeader from './components/GlobalHeader';
+
+import { TransactionProvider } from './context/TransactionContext';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -49,19 +50,20 @@ import CryptoDetailPage from './pages/CryptoDetails';
 import logger from './services/logger';
 import LogViewer from './components/LogViewer';
 import AddFundsPage from './pages/AddFunds';
+import TransactionsPage from './pages/TransactionsPage';
+import { WalletProvider } from './context/WalletContext';
 
 logger.log('This is a log message');
-
-
-
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    
+    <TransactionProvider>
+      <WalletProvider>
     <IonReactRouter>
     <LogViewer />
+    
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/tab1">
@@ -78,7 +80,8 @@ const App: React.FC = () => (
           </Route>
           <Route path="/crypto/:id" component={CryptoDetailPage} exact />
           <Route path="/add-funds" component={AddFundsPage} exact />
-          <Redirect from="/" to="/tab3" exact />
+          <Route path="/transactions" component={TransactionsPage} exact />
+          {/* <Redirect from="/" to="/tab3" exact /> */}
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
@@ -96,6 +99,8 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
+    </WalletProvider>
+    </TransactionProvider>
   </IonApp>
 );
 
