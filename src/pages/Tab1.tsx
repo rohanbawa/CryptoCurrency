@@ -10,17 +10,12 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonButton,
   IonImg,
-  IonSearchbar,
-  IonBackButton,
-  IonButtons
-} from '@ionic/react';
+  IonSearchbar} from '@ionic/react';
 import axios from 'axios';
 import './Tab1.css';
 import { useHistory } from 'react-router-dom';
 import logger from '../services/logger';
-import { warning } from 'ionicons/icons';
 
 
 interface CryptoCurrency {
